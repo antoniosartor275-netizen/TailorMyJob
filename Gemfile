@@ -77,3 +77,4 @@ group :development do
 end
 
 gem "devise"
+gem "importmap-rails"
