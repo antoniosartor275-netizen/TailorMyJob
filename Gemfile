@@ -68,3 +68,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "ruby_llm", "~> 1.2.0"
+gem "cloudinary"
+
+
+group :development do
+    gem "hotwire-livereload"
+end
+
+gem "devise"
