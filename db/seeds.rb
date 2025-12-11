@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+puts "cleaning database..."
+Application.destroy_all
+Cv.destroy_all
+User.destroy_all
+
+User.create!(email: "a@a", password: 123456, name: "as")
+User.create!(email: "b@b", password: 123456, name: "bs")
+
+users = User.all
+users.each do |user|
+  Cv.create!(user: user, file: "file", parsed_text: "parsed_text")
+  Cv.create!(user: user, file: "file2", parsed_text: "parsed_text2")
+end
+
+cvs = Cv.all
+cvs.each do |cv|
+  Application.create!(cv: cv,user: cv.user, job_description: "job_description", tailored_cv: "tailored_cv", cover_letter: "cover_letter" )
+  Application.create!(cv: cv,user: cv.user, job_description: "job_description2", tailored_cv: "tailored_cv2", cover_letter: "cover_letter2" )
+end
