@@ -1,0 +1,13 @@
+class CreateApplications < ActiveRecord::Migration[7.1]
+  def change
+    create_table :applications do |t|
+      t.text :job_description
+      t.text :tailored_cv
+      t.text :cover_letter
+      t.references :user, null: false, foreign_key: true
+      t.references :cv, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
