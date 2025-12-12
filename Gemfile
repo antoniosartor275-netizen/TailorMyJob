@@ -75,7 +75,7 @@ end
 
 # Added Gems
 gem "cloudinary"
-gem "ruby_llm", "~> 1.2.0"
+gem "ruby_llm", "~> 1.9.1"
 
 gem "kramdown"
 gem "kramdown-parser-gfm"
